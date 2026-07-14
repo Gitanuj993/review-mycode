@@ -1,0 +1,24 @@
+name: Log Commit
+
+on:
+  push:
+
+jobs:
+  log-commit:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+
+      - name: Log Commit Details
+        run: |
+          echo "Commit SHA: $GITHUB_SHA"
+          echo "Branch: ${GITHUB_REF#refs/heads/}"
+          echo "Author: $(git log -1 --pretty=format:'%an <%ae>')"
+          echo "Date: $(git log -1 --pretty=format:'%ad')"
+          echo "Message: $(git log -1 --pretty=format:'%s')"
+          echo "Changed files:"
+          git diff-tree --no-commit-id --name-only -r HEAD
