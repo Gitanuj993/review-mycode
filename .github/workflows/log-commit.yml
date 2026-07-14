@@ -8,17 +8,11 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout Repository
-        uses: actions/checkout@v4
-        with:
-          fetch-depth: 1
-
-      - name: Log Commit Details
+      - name: Log Commit
         run: |
-          echo "Commit SHA: $GITHUB_SHA"
-          echo "Branch: ${GITHUB_REF#refs/heads/}"
-          echo "Author: $(git log -1 --pretty=format:'%an <%ae>')"
-          echo "Date: $(git log -1 --pretty=format:'%ad')"
-          echo "Message: $(git log -1 --pretty=format:'%s')"
-          echo "Changed files:"
-          git diff-tree --no-commit-id --name-only -r HEAD
+          echo "SHA: ${{ github.sha }}"
+          echo "Repository: ${{ github.repository }}"
+          echo "Ref: ${{ github.ref }}"
+          echo "Actor: ${{ github.actor }}"
+          echo "Message: ${{ github.event.head_commit.message }}"
+          echo "Author: ${{ github.event.head_commit.author.name }}"
