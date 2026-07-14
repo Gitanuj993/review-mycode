@@ -1,0 +1,18 @@
+name: Log Commit
+
+on:
+  push:
+
+jobs:
+  log-commit:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Log Commit
+        run: |
+          echo "SHA: ${{ github.sha }}"
+          echo "Repository: ${{ github.repository }}"
+          echo "Ref: ${{ github.ref }}"
+          echo "Actor: ${{ github.actor }}"
+          echo "Message: ${{ github.event.head_commit.message }}"
+          echo "Author: ${{ github.event.head_commit.author.name }}"
