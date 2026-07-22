@@ -171,4 +171,4 @@ The system does not automatically modify or merge code.
 - [x] Constraints
 - [x] High-Level Use Case
 - [x] Success Criteria *(Optional but Recommended)*
-- [] Glossary *(Optional but Recommended)*
+- [x] Glossary *(Optional but Recommended)*
